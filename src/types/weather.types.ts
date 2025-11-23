@@ -7,6 +7,7 @@ export interface CurrentConditions {
   humidity: number;
   icon: string;
   datetime: string;
+  visibility: number | null;
 }
 
 export interface HourData {
@@ -23,6 +24,10 @@ export interface HourData {
 export interface DayData {
   datetime: string;
   hours: HourData[];
+  tempmax: number;
+  tempmin: number;
+  precip: number | null;
+  uvindex: number;
 }
 
 
