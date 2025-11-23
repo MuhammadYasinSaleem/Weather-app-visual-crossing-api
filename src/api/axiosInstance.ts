@@ -7,7 +7,7 @@ const API_KEY = import.meta.env.VITE_WEATHERAPI_KEY;
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: BASE_URL,
-  timeout: 10000,
+  timeout: 50000,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
