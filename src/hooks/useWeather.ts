@@ -35,7 +35,6 @@ export function useWeather(autoGeolocate: boolean = true): UseWeatherResult {
   }, []);
 
   const fetchWeatherByCoordinates = useCallback(async (lat: number, lon: number) => {
-    // Format coordinates to 4 decimal places
     const formattedLat = lat.toFixed(4);
     const formattedLon = lon.toFixed(4);
     const location = `${formattedLat},${formattedLon}`;
@@ -48,7 +47,6 @@ export function useWeather(autoGeolocate: boolean = true): UseWeatherResult {
     }
   }, [lastLocation, fetchWeather]);
 
-  // Auto-geolocation on mount
   useEffect(() => {
     if (autoGeolocate && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -57,7 +55,6 @@ export function useWeather(autoGeolocate: boolean = true): UseWeatherResult {
           fetchWeatherByCoordinates(latitude, longitude);
         },
         () => {
-          // Fallback to default location (New York)
           fetchWeather('New York');
         }
       );

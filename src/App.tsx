@@ -25,7 +25,6 @@ function App() {
         transition={{ duration: 0.5 }}
         className="max-w-7xl mx-auto px-4 py-8"
       >
-        {/* Header */}
         <motion.div initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.5 }} className="mb-8">
           <div className="flex items-center justify-between">
             <div>
@@ -46,12 +45,10 @@ function App() {
           </div>
         </motion.div>
 
-        {/* Search */}
         <div className="mb-8">
           <LocationSearch onSearch={handleLocationSearch} isLoading={loading} />
         </div>
 
-        {/* Error State */}
         {error && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -62,7 +59,6 @@ function App() {
           </motion.div>
         )}
 
-        {/* Loading State */}
         {loading && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
             <div className="inline-block">
@@ -72,10 +68,8 @@ function App() {
           </motion.div>
         )}
 
-        {/* Weather Content */}
         {weatherData && !loading && (
           <>
-            {/* Current Weather */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -85,7 +79,6 @@ function App() {
               <WeatherCard weatherData={weatherData} />
             </motion.div>
 
-            {/* 24-Hour Forecast */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}

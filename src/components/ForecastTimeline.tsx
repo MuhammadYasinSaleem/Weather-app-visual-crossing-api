@@ -21,7 +21,6 @@ export default function ForecastTimeline({ hours }: ForecastTimelineProps) {
     return <Sun className="w-6 h-6 text-yellow-400" />;
   };
 
-  // Display up to 24 hours
   const displayHours = hours.slice(0, 24);
 
   return (
@@ -30,7 +29,6 @@ export default function ForecastTimeline({ hours }: ForecastTimelineProps) {
       <div className="overflow-x-auto">
         <div className="flex gap-3 pb-2">
           {displayHours.map((hour, index) => {
-            // Parse the datetime - it comes as "HH:MM:SS"
             const timeString = hour.datetime;
             const [hours, minutes] = timeString.split(':');
             const hour24 = parseInt(hours, 10);

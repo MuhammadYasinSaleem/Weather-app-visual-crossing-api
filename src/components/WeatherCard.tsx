@@ -28,10 +28,8 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
   return (
     <div className="bg-gradient-to-br from-slate-800/80 to-slate-700/80 backdrop-blur-xl rounded-2xl p-8 border border-slate-600/30 shadow-2xl">
       <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} transition={{ duration: 0.3 }}>
-        {/* Location */}
         <h2 className="text-3xl font-bold mb-8 text-slate-100">{location}</h2>
 
-        {/* Main Weather Display */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
             <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}>
@@ -44,7 +42,6 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
           </div>
         </div>
 
-        {/* Weather Details Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -93,7 +90,6 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
           </motion.div>
         </div>
 
-        {/* Day Summary */}
         <div className="mt-8 pt-8 border-t border-slate-600/30">
           <h3 className="text-sm font-semibold text-slate-400 mb-4">TODAY&apos;S SUMMARY</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
