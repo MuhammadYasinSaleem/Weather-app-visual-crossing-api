@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { Cloud, CloudRain, Sun, CloudSnow } from 'lucide-react';
-import type { HourData } from '../types/weather.types';
+import type { DayData, HourData } from '../types/weather.types';
 
 interface ForecastTimelineProps {
-  hours: HourData[];
+  days: DayData[];
+  currentDateTime: string;
 }
 
-export default function ForecastTimeline({ hours }: ForecastTimelineProps) {
+export default function ForecastTimeline({ days, currentDateTime }: ForecastTimelineProps) {
   const getHourlyIcon = (conditions: string) => {
     const lower = conditions.toLowerCase();
     if (lower.includes('rain')) {
@@ -21,11 +22,33 @@ export default function ForecastTimeline({ hours }: ForecastTimelineProps) {
     return <Sun className="w-6 h-6 text-yellow-400" />;
   };
 
-  const displayHours = hours.slice(0, 24);
+  // Combine all hours from all days
+  const allHours: HourData[] = days.flatMap(day => day.hours);
+
+  // Parse current time to find the current hour index
+  const currentHour = parseInt(currentDateTime.split(':')[0], 10);
+  
+  // Find the index of current hour in the combined array
+  let currentHourIndex = 0;
+  for (let i = 0; i < allHours.length; i++) {
+    const hourValue = parseInt(allHours[i].datetime.split(':')[0], 10);
+    if (hourValue === currentHour) {
+      currentHourIndex = i;
+      break;
+    }
+  }
+
+  // Get 24 hours before and 24 hours after current time (48 hours total)
+  const startIndex = Math.max(0, currentHourIndex - 24);
+  const endIndex = Math.min(allHours.length, currentHourIndex + 24);
+  const displayHours = allHours.slice(startIndex, endIndex);
 
   return (
     <div className="bg-gradient-to-r from-slate-800/80 to-slate-700/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-600/30 shadow-2xl">
-      <h3 className="text-xl font-bold mb-6 text-slate-100">24-Hour Forecast</h3>
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-xl font-bold text-slate-100">48-Hour Timeline</h3>
+        <p className="text-sm text-slate-400">24 hrs back · 24 hrs forward</p>
+      </div>
       <div className="overflow-x-auto">
         <div className="flex gap-3 pb-2">
           {displayHours.map((hour, index) => {
@@ -36,16 +59,37 @@ export default function ForecastTimeline({ hours }: ForecastTimelineProps) {
             const ampm = hour24 >= 12 ? 'PM' : 'AM';
             const displayTime = `${hour12}:${minutes} ${ampm}`;
 
+            // Determine if this is past, current, or future
+            const isPast = index < (currentHourIndex - startIndex);
+            const isCurrent = index === (currentHourIndex - startIndex);
+
             return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ delay: index * 0.02 }}
                 whileHover={{ scale: 1.08, y: -5 }}
-                className="flex-shrink-0 bg-slate-700/50 rounded-xl p-4 border border-slate-600/20 min-w-24 text-center hover:bg-slate-700/70 transition-colors cursor-pointer"
+                className={`flex-shrink-0 rounded-xl p-4 border min-w-24 text-center transition-colors cursor-pointer ${
+                  isCurrent 
+                    ? 'bg-blue-600/60 border-blue-400/50 ring-2 ring-blue-400/30' 
+                    : isPast
+                    ? 'bg-slate-700/30 border-slate-600/20 opacity-70 hover:bg-slate-700/50'
+                    : 'bg-slate-700/50 border-slate-600/20 hover:bg-slate-700/70'
+                }`}
               >
-                <p className="text-xs font-semibold text-slate-300 mb-3">{displayTime}</p>
+                {isCurrent && (
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
+                    <span className="text-xs bg-blue-500 text-white px-2 py-0.5 rounded-full font-semibold">
+                      NOW
+                    </span>
+                  </div>
+                )}
+                <p className={`text-xs font-semibold mb-3 ${
+                  isCurrent ? 'text-blue-100' : isPast ? 'text-slate-400' : 'text-slate-300'
+                }`}>
+                  {displayTime}
+                </p>
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, delay: index * 0.1 }}
@@ -53,7 +97,11 @@ export default function ForecastTimeline({ hours }: ForecastTimelineProps) {
                 >
                   {getHourlyIcon(hour.conditions)}
                 </motion.div>
-                <p className="text-lg font-bold text-white mb-2">{Math.round(hour.temp)}°</p>
+                <p className={`text-lg font-bold mb-2 ${
+                  isCurrent ? 'text-white' : isPast ? 'text-slate-300' : 'text-white'
+                }`}>
+                  {Math.round(hour.temp)}°
+                </p>
                 <p className="text-xs text-slate-400">{Math.round(hour.precipprob)}%</p>
               </motion.div>
             );
