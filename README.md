@@ -39,8 +39,8 @@ The app uses the **Visual Crossing Weather API** to fetch real-time weather data
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd weather-app
+   git clone https://github.com/MuhammadYasinSaleem/Weather-app-visual-crossing-api.git
+   cd Weather-app-visual-crossing-api
    ```
 
 2. **Install dependencies**
