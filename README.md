@@ -2,6 +2,10 @@
 
 A modern, responsive weather application built with React, TypeScript, and Vite. Features real-time weather data, auto-geolocation, 24-hour forecasts, and beautiful animations powered by Framer Motion.
 
+## 🌐 Live Preview
+
+**[View Live Demo →](https://weather-app-visual-crossing-api.vercel.app/)**
+
 ## ✨ Features
 
 - 🌍 **Location Search**: Search for weather in any city worldwide
@@ -34,6 +38,8 @@ The app uses the **Visual Crossing Weather API** to fetch real-time weather data
 - **Lucide React** - Beautiful, customizable icons
 - **Tailwind CSS** - Utility-first styling
 - **Visual Crossing Weather API** - Real-time weather data
+
+
 
 ## 📦 Installation
 
