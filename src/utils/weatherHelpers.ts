@@ -1,4 +1,8 @@
-import type { WeatherError } from '../types/weather.types';
+export interface WeatherError {
+  message: string;
+  status?: number;
+  code?: string;
+}
 
 export class WeatherApiError extends Error {
   status?: number;

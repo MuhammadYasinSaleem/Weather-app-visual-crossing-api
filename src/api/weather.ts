@@ -3,14 +3,14 @@ import type {
   WeatherData,
   VisualCrossingResponse,
   WeatherQueryParams,
-} from '../types/weather.types';
+} from '@types';
 import {
   validateLocation,
   getDateRange,
   isApiKeyConfigured,
   WeatherApiError,
   formatWeatherError,
-} from '../utils/weatherHelpers';
+} from '@utils';
 
 class WeatherService {
   async getWeather(
@@ -86,4 +86,4 @@ export const getCurrentWeather = (location: string) =>
 export const getHourlyForecast = (location: string, hours?: number) =>
   weatherService.getHourlyForecast(location, hours);
 
-export type { WeatherData, WeatherQueryParams } from '../types/weather.types';
+export type { WeatherData, WeatherQueryParams } from '@types';

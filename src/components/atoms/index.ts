@@ -1,2 +1,1 @@
-// index file for atoms
-// export { default as Button } from './Button';
+// Empty for now - no atom components yet

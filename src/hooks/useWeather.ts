@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { weatherService } from '../api/weather';
-import type { VisualCrossingResponse } from '../types/weather.types';
+import { weatherService } from '@api';
+import type { VisualCrossingResponse } from '@types';
 
 interface UseWeatherResult {
   weatherData: VisualCrossingResponse | null;
