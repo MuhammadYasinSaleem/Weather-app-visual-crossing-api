@@ -19,7 +19,10 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <main
+      className="min-h-screen bg-gradient-to-br from-slate-900
+      via-slate-800 to-slate-900 text-white"
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -45,7 +48,9 @@ function App() {
                 disabled={loading}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 p-3 rounded-xl border border-slate-600/30 transition-colors"
+                className="bg-slate-700/50 hover:bg-slate-700
+                disabled:bg-slate-800 p-3 rounded-xl border
+                border-slate-600/30 transition-colors"
               >
                 <RefreshCw
                   className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`}
@@ -63,7 +68,8 @@ function App() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-8 text-red-200"
+            className="bg-red-500/20 border border-red-500/50
+            rounded-lg p-4 mb-8 text-red-200"
           >
             {error}
           </motion.div>
@@ -76,7 +82,10 @@ function App() {
             className="text-center py-12"
           >
             <div className="inline-block">
-              <div className="w-12 h-12 border-4 border-slate-400 border-t-blue-400 rounded-full animate-spin"></div>
+              <div
+                className="w-12 h-12 border-4 border-slate-400
+                border-t-blue-400 rounded-full animate-spin"
+              ></div>
             </div>
             <p className="mt-4 text-slate-300">Loading weather data...</p>
           </motion.div>

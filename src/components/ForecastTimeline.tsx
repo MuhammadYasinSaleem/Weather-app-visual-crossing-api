@@ -43,7 +43,11 @@ export default function ForecastTimeline({
   const displayHours = allHours.slice(startIndex, endIndex);
 
   return (
-    <div className="bg-gradient-to-r from-slate-800/80 to-slate-700/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-600/30 shadow-2xl">
+    <div
+      className="bg-gradient-to-r from-slate-800/80 to-slate-700/80
+      backdrop-blur-xl rounded-2xl p-6 border border-slate-600/30
+      shadow-2xl"
+    >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-bold text-slate-100">48-Hour Timeline</h3>
         <p className="text-sm text-slate-400">24 hrs back · 24 hrs forward</p>
@@ -68,17 +72,28 @@ export default function ForecastTimeline({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.02 }}
                 whileHover={{ scale: 1.08, y: -5 }}
-                className={`flex-shrink-0 rounded-xl p-4 border min-w-24 text-center transition-colors cursor-pointer ${
-                  isCurrent
-                    ? 'bg-blue-600/60 border-blue-400/50 ring-2 ring-blue-400/30'
-                    : isPast
-                      ? 'bg-slate-700/30 border-slate-600/20 opacity-70 hover:bg-slate-700/50'
-                      : 'bg-slate-700/50 border-slate-600/20 hover:bg-slate-700/70'
-                }`}
+                className={`flex-shrink-0 rounded-xl p-4 border
+                min-w-24 text-center transition-colors
+                cursor-pointer ${
+              isCurrent
+                ? 'bg-blue-600/60 border-blue-400/50 \
+ring-2 ring-blue-400/30'
+                : isPast
+                  ? 'bg-slate-700/30 \
+border-slate-600/20 opacity-70 hover:bg-slate-700/50'
+                  : 'bg-slate-700/50 \
+border-slate-600/20 hover:bg-slate-700/70'
+              }`}
               >
                 {isCurrent && (
-                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                    <span className="text-xs bg-blue-500 text-white px-2 py-0.5 rounded-full font-semibold">
+                  <div
+                    className="absolute -top-2 left-1/2 transform
+                    -translate-x-1/2"
+                  >
+                    <span
+                      className="text-xs bg-blue-500 text-white px-2
+                      py-0.5 rounded-full font-semibold"
+                    >
                       NOW
                     </span>
                   </div>

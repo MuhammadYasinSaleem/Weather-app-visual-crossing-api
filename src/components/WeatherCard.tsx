@@ -34,7 +34,11 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
   };
 
   return (
-    <div className="bg-gradient-to-br from-slate-800/80 to-slate-700/80 backdrop-blur-xl rounded-2xl p-8 border border-slate-600/30 shadow-2xl">
+    <div
+      className="bg-gradient-to-br from-slate-800/80 to-slate-700/80
+      backdrop-blur-xl rounded-2xl p-8 border border-slate-600/30
+      shadow-2xl"
+    >
       <motion.div
         initial={{ scale: 0.95 }}
         animate={{ scale: 1 }}
@@ -64,7 +68,8 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="bg-slate-700/50 rounded-xl p-4 border border-slate-600/20"
+            className="bg-slate-700/50 rounded-xl p-4 border
+            border-slate-600/20"
           >
             <div className="flex items-center gap-2 mb-2">
               <Wind className="w-5 h-5 text-cyan-400" />
@@ -77,7 +82,8 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
 
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="bg-slate-700/50 rounded-xl p-4 border border-slate-600/20"
+            className="bg-slate-700/50 rounded-xl p-4 border
+            border-slate-600/20"
           >
             <div className="flex items-center gap-2 mb-2">
               <Droplets className="w-5 h-5 text-blue-400" />
@@ -90,7 +96,8 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
 
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="bg-slate-700/50 rounded-xl p-4 border border-slate-600/20"
+            className="bg-slate-700/50 rounded-xl p-4 border
+            border-slate-600/20"
           >
             <div className="flex items-center gap-2 mb-2">
               <Eye className="w-5 h-5 text-purple-400" />
@@ -105,7 +112,8 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
 
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="bg-slate-700/50 rounded-xl p-4 border border-slate-600/20"
+            className="bg-slate-700/50 rounded-xl p-4 border
+            border-slate-600/20"
           >
             <div className="flex items-center gap-2 mb-2">
               <Cloud className="w-5 h-5 text-slate-300" />
