@@ -1,21 +1,24 @@
-import { useState } from 'react';
-import type { FormEvent } from 'react';
-import { motion } from 'framer-motion';
-import { Search, MapPin } from 'lucide-react';
+import { useState } from "react";
+import type { FormEvent } from "react";
+import { motion } from "framer-motion";
+import { Search, MapPin } from "lucide-react";
 
 interface LocationSearchProps {
   onSearch: (location: string) => void;
   isLoading: boolean;
 }
 
-export default function LocationSearch({ onSearch, isLoading }: LocationSearchProps) {
-  const [input, setInput] = useState('');
+export default function LocationSearch({
+  onSearch,
+  isLoading,
+}: LocationSearchProps) {
+  const [input, setInput] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (input.trim()) {
       onSearch(input.trim());
-      setInput('');
+      setInput("");
     }
   };
 

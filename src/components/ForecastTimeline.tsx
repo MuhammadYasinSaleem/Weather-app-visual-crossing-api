@@ -1,44 +1,43 @@
-import { motion } from 'framer-motion';
-import { Cloud, CloudRain, Sun, CloudSnow } from 'lucide-react';
-import type { DayData, HourData } from '../types/weather.types';
+import { motion } from "framer-motion";
+import { Cloud, CloudRain, Sun, CloudSnow } from "lucide-react";
+import type { DayData, HourData } from "../types/weather.types";
 
 interface ForecastTimelineProps {
   days: DayData[];
   currentDateTime: string;
 }
 
-export default function ForecastTimeline({ days, currentDateTime }: ForecastTimelineProps) {
+export default function ForecastTimeline({
+  days,
+  currentDateTime,
+}: ForecastTimelineProps) {
   const getHourlyIcon = (conditions: string) => {
     const lower = conditions.toLowerCase();
-    if (lower.includes('rain')) {
+    if (lower.includes("rain")) {
       return <CloudRain className="w-6 h-6 text-blue-400" />;
-    } else if (lower.includes('cloud')) {
+    } else if (lower.includes("cloud")) {
       return <Cloud className="w-6 h-6 text-slate-300" />;
-    } else if (lower.includes('snow')) {
+    } else if (lower.includes("snow")) {
       return <CloudSnow className="w-6 h-6 text-cyan-200" />;
-    } else if (lower.includes('clear') || lower.includes('sunny')) {
+    } else if (lower.includes("clear") || lower.includes("sunny")) {
       return <Sun className="w-6 h-6 text-yellow-400" />;
     }
     return <Sun className="w-6 h-6 text-yellow-400" />;
   };
 
-  // Combine all hours from all days
-  const allHours: HourData[] = days.flatMap(day => day.hours);
+  const allHours: HourData[] = days.flatMap((day) => day.hours);
 
-  // Parse current time to find the current hour index
-  const currentHour = parseInt(currentDateTime.split(':')[0], 10);
-  
-  // Find the index of current hour in the combined array
+  const currentHour = parseInt(currentDateTime.split(":")[0], 10);
+
   let currentHourIndex = 0;
   for (let i = 0; i < allHours.length; i++) {
-    const hourValue = parseInt(allHours[i].datetime.split(':')[0], 10);
+    const hourValue = parseInt(allHours[i].datetime.split(":")[0], 10);
     if (hourValue === currentHour) {
       currentHourIndex = i;
       break;
     }
   }
 
-  // Get 24 hours before and 24 hours after current time (48 hours total)
   const startIndex = Math.max(0, currentHourIndex - 24);
   const endIndex = Math.min(allHours.length, currentHourIndex + 24);
   const displayHours = allHours.slice(startIndex, endIndex);
@@ -53,15 +52,14 @@ export default function ForecastTimeline({ days, currentDateTime }: ForecastTime
         <div className="flex gap-3 pb-2">
           {displayHours.map((hour, index) => {
             const timeString = hour.datetime;
-            const [hours, minutes] = timeString.split(':');
+            const [hours, minutes] = timeString.split(":");
             const hour24 = parseInt(hours, 10);
             const hour12 = hour24 % 12 || 12;
-            const ampm = hour24 >= 12 ? 'PM' : 'AM';
+            const ampm = hour24 >= 12 ? "PM" : "AM";
             const displayTime = `${hour12}:${minutes} ${ampm}`;
 
-            // Determine if this is past, current, or future
-            const isPast = index < (currentHourIndex - startIndex);
-            const isCurrent = index === (currentHourIndex - startIndex);
+            const isPast = index < currentHourIndex - startIndex;
+            const isCurrent = index === currentHourIndex - startIndex;
 
             return (
               <motion.div
@@ -71,11 +69,11 @@ export default function ForecastTimeline({ days, currentDateTime }: ForecastTime
                 transition={{ delay: index * 0.02 }}
                 whileHover={{ scale: 1.08, y: -5 }}
                 className={`flex-shrink-0 rounded-xl p-4 border min-w-24 text-center transition-colors cursor-pointer ${
-                  isCurrent 
-                    ? 'bg-blue-600/60 border-blue-400/50 ring-2 ring-blue-400/30' 
+                  isCurrent
+                    ? "bg-blue-600/60 border-blue-400/50 ring-2 ring-blue-400/30"
                     : isPast
-                    ? 'bg-slate-700/30 border-slate-600/20 opacity-70 hover:bg-slate-700/50'
-                    : 'bg-slate-700/50 border-slate-600/20 hover:bg-slate-700/70'
+                      ? "bg-slate-700/30 border-slate-600/20 opacity-70 hover:bg-slate-700/50"
+                      : "bg-slate-700/50 border-slate-600/20 hover:bg-slate-700/70"
                 }`}
               >
                 {isCurrent && (
@@ -85,24 +83,42 @@ export default function ForecastTimeline({ days, currentDateTime }: ForecastTime
                     </span>
                   </div>
                 )}
-                <p className={`text-xs font-semibold mb-3 ${
-                  isCurrent ? 'text-blue-100' : isPast ? 'text-slate-400' : 'text-slate-300'
-                }`}>
+                <p
+                  className={`text-xs font-semibold mb-3 ${
+                    isCurrent
+                      ? "text-blue-100"
+                      : isPast
+                        ? "text-slate-400"
+                        : "text-slate-300"
+                  }`}
+                >
                   {displayTime}
                 </p>
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, delay: index * 0.1 }}
+                  transition={{
+                    duration: 2,
+                    repeat: Number.POSITIVE_INFINITY,
+                    delay: index * 0.1,
+                  }}
                   className="flex justify-center mb-3"
                 >
                   {getHourlyIcon(hour.conditions)}
                 </motion.div>
-                <p className={`text-lg font-bold mb-2 ${
-                  isCurrent ? 'text-white' : isPast ? 'text-slate-300' : 'text-white'
-                }`}>
+                <p
+                  className={`text-lg font-bold mb-2 ${
+                    isCurrent
+                      ? "text-white"
+                      : isPast
+                        ? "text-slate-300"
+                        : "text-white"
+                  }`}
+                >
                   {Math.round(hour.temp)}°
                 </p>
-                <p className="text-xs text-slate-400">{Math.round(hour.precipprob)}%</p>
+                <p className="text-xs text-slate-400">
+                  {Math.round(hour.precipprob)}%
+                </p>
               </motion.div>
             );
           })}

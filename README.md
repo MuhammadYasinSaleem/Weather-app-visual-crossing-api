@@ -38,19 +38,22 @@ The app uses the **Visual Crossing Weather API** to fetch real-time weather data
 ## 📦 Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/MuhammadYasinSaleem/Weather-app-visual-crossing-api.git
    cd Weather-app-visual-crossing-api
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
-   
+
    Create a `.env` file in the root directory:
+
    ```env
    VITE_WEATHERAPI_KEY=your_api_key_here
    VITE_BASE_URL=https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline
@@ -62,12 +65,13 @@ The app uses the **Visual Crossing Weather API** to fetch real-time weather data
    - Copy your API key and paste it in the `.env` file
 
 4. **Run the development server**
+
    ```bash
    npm run dev
    ```
 
 5. **Open your browser**
-   
+
    Navigate to `http://localhost:5173`
 
 ## 🏗️ Project Structure
@@ -100,10 +104,10 @@ weather-app/
 
 ## 🔑 Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `VITE_WEATHERAPI_KEY` | Your Visual Crossing API key | ✅ Yes |
-| `VITE_BASE_URL` | Base URL for the Weather API | ✅ Yes |
+| Variable              | Description                  | Required |
+| --------------------- | ---------------------------- | -------- |
+| `VITE_WEATHERAPI_KEY` | Your Visual Crossing API key | ✅ Yes   |
+| `VITE_BASE_URL`       | Base URL for the Weather API | ✅ Yes   |
 
 ## 🌐 API Usage
 
@@ -115,11 +119,13 @@ The app uses the Visual Crossing Weather API with the following configuration:
 - **Date Range**: 24 hours backward + 24 hours forward (48 hours total)
 
 ### Example API Call:
+
 ```typescript
-const data = await weatherService.getWeather('London');
+const data = await weatherService.getWeather("London");
 ```
 
 ### API Methods:
+
 - `getWeather(location)` - Get complete weather data (current + hourly)
 - `getCurrentWeather(location)` - Get only current weather conditions
 - `getHourlyForecast(location, hours)` - Get hourly forecast data
@@ -127,10 +133,13 @@ const data = await weatherService.getWeather('London');
 ## 🧩 Components
 
 ### LocationSearch
+
 Search input with auto-complete functionality and animated interactions.
 
 ### WeatherCard
+
 Displays current weather conditions including:
+
 - Temperature and "feels like" temperature
 - Weather icon based on conditions
 - Wind speed
@@ -141,7 +150,9 @@ Displays current weather conditions including:
 - UV index
 
 ### ForecastTimeline
+
 Horizontal scrollable timeline showing 24-hour forecast with:
+
 - Hourly time stamps
 - Weather icons
 - Temperature per hour
@@ -150,6 +161,7 @@ Horizontal scrollable timeline showing 24-hour forecast with:
 ## 🎨 Styling
 
 The app uses a modern dark theme with:
+
 - Glass-morphism effects (`backdrop-blur`)
 - Gradient backgrounds
 - Smooth transitions and animations
@@ -184,6 +196,7 @@ npm run lint
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these guidelines:
+
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
@@ -197,16 +210,19 @@ MIT License - feel free to use this project for learning or commercial purposes.
 ## 🐛 Troubleshooting
 
 ### API Key Issues
+
 - Ensure your API key is correctly set in `.env`
 - Restart the dev server after changing environment variables
 - Check that you haven't exceeded the free tier rate limit (1000 requests/day)
 
 ### Geolocation Not Working
+
 - Grant location permissions in your browser
 - The app will fallback to New York if geolocation is denied
 - Use the search bar to manually enter a location
 
 ### Build Errors
+
 - Clear node_modules and reinstall: `rm -rf node_modules && npm install`
 - Ensure you're using Node.js version 16 or higher
 - Check that all TypeScript types are correctly imported

@@ -30,7 +30,6 @@ export interface DayData {
   uvindex: number;
 }
 
-
 export interface VisualCrossingResponse {
   resolvedAddress: string;
   latitude: number;
@@ -47,7 +46,7 @@ export interface WeatherData {
     longitude: number;
   };
   timezone: string;
-  
+
   current: {
     temp: number;
     windspeed: number;
@@ -58,12 +57,12 @@ export interface WeatherData {
     icon: string;
     datetime: string;
   };
-  
+
   hours: {
-    datetime: string;                  
-    temp: number;                      
-    windspeed: number;                 
-    precipprob: number;                
+    datetime: string;
+    temp: number;
+    windspeed: number;
+    precipprob: number;
     conditions: string;
     icon: string;
     feelslike: number;
@@ -75,7 +74,7 @@ export interface WeatherQueryParams {
   location: string;
   startDate?: string;
   endDate?: string;
-  unitGroup?: 'metric' | 'us' | 'uk';
+  unitGroup?: "metric" | "us" | "uk";
   include?: string;
 }
 
