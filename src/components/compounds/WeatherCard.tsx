@@ -8,7 +8,7 @@ import {
   Eye,
   CloudSnow,
 } from 'lucide-react';
-import type { VisualCrossingResponse } from '../types/weather.types';
+import type { VisualCrossingResponse } from '../../types/weather.types';
 
 interface WeatherCardProps {
   weatherData: VisualCrossingResponse;
