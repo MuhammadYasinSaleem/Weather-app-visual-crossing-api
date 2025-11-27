@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Cloud, CloudRain, Sun, CloudSnow } from 'lucide-react';
-import type { DayData, HourData } from '@types';
+import type { DayData, HourData } from '@customTypes/weather.types';
 
 interface ForecastTimelineProps {
   days: DayData[];

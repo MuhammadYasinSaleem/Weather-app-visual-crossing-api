@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { RefreshCw } from 'lucide-react';
-import { WeatherCard, LocationSearch, ForecastTimeline } from '@components';
-import { useWeather } from '@hooks';
+import { WeatherCard, LocationSearch, ForecastTimeline } from '@components/compounds';
+import { useWeather } from '@hooks/useWeather';
 import '@/App.css';
 
 function App() {
