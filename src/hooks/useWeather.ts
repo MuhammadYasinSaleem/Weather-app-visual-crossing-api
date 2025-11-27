@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
-import { weatherService } from "../api/weather";
-import type { VisualCrossingResponse } from "../types/weather.types";
+import { useState, useEffect, useCallback } from 'react';
+import { weatherService } from '../api/weather';
+import type { VisualCrossingResponse } from '../types/weather.types';
 
 interface UseWeatherResult {
   weatherData: VisualCrossingResponse | null;
@@ -17,7 +17,7 @@ export function useWeather(autoGeolocate: boolean = true): UseWeatherResult {
   );
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [lastLocation, setLastLocation] = useState<string>("");
+  const [lastLocation, setLastLocation] = useState<string>('');
 
   const fetchWeather = useCallback(async (location: string) => {
     setLoading(true);
@@ -29,7 +29,7 @@ export function useWeather(autoGeolocate: boolean = true): UseWeatherResult {
       setLastLocation(location);
     } catch (err: any) {
       const errorMessage =
-        err.message || "Failed to fetch weather data. Please try again.";
+        err.message || 'Failed to fetch weather data. Please try again.';
       setError(errorMessage);
       setWeatherData(null);
     } finally {
@@ -61,7 +61,7 @@ export function useWeather(autoGeolocate: boolean = true): UseWeatherResult {
           fetchWeatherByCoordinates(latitude, longitude);
         },
         () => {
-          fetchWeather("New York");
+          fetchWeather('New York');
         },
       );
     }

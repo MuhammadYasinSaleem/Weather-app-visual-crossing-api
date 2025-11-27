@@ -1,16 +1,16 @@
-import axiosInstance from "./axiosInstance";
+import axiosInstance from './axiosInstance';
 import type {
   WeatherData,
   VisualCrossingResponse,
   WeatherQueryParams,
-} from "../types/weather.types";
+} from '../types/weather.types';
 import {
   validateLocation,
   getDateRange,
   isApiKeyConfigured,
   WeatherApiError,
   formatWeatherError,
-} from "../utils/weatherHelpers";
+} from '../utils/weatherHelpers';
 
 class WeatherService {
   async getWeather(
@@ -19,14 +19,14 @@ class WeatherService {
   ): Promise<WeatherData> {
     if (!isApiKeyConfigured()) {
       throw new WeatherApiError(
-        "API key not configured",
+        'API key not configured',
         401,
-        "MISSING_API_KEY",
+        'MISSING_API_KEY',
       );
     }
 
     if (!validateLocation(location)) {
-      throw new WeatherApiError("Invalid location", 400, "INVALID_LOCATION");
+      throw new WeatherApiError('Invalid location', 400, 'INVALID_LOCATION');
     }
 
     try {
@@ -39,9 +39,9 @@ class WeatherService {
 
       const response = await axiosInstance.get<VisualCrossingResponse>(url, {
         params: {
-          unitGroup: options.unitGroup || "metric",
-          include: options.include || "hours,current,days",
-          contentType: "json",
+          unitGroup: options.unitGroup || 'metric',
+          include: options.include || 'hours,current,days',
+          contentType: 'json',
         },
       });
 
@@ -57,7 +57,7 @@ class WeatherService {
   }
 
   async getCurrentWeather(location: string) {
-    const data = await this.getWeather(location, { include: "current" });
+    const data = await this.getWeather(location, { include: 'current' });
     return {
       location: data.location,
       ...data.current,
@@ -65,7 +65,7 @@ class WeatherService {
   }
 
   async getHourlyForecast(location: string, hours: number = 48) {
-    const data = await this.getWeather(location, { include: "hours" });
+    const data = await this.getWeather(location, { include: 'hours' });
     return {
       location: data.location,
       hours: data.hours.slice(0, hours),
@@ -86,4 +86,4 @@ export const getCurrentWeather = (location: string) =>
 export const getHourlyForecast = (location: string, hours?: number) =>
   weatherService.getHourlyForecast(location, hours);
 
-export type { WeatherData, WeatherQueryParams } from "../types/weather.types";
+export type { WeatherData, WeatherQueryParams } from '../types/weather.types';

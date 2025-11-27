@@ -74,7 +74,7 @@ export interface WeatherQueryParams {
   location: string;
   startDate?: string;
   endDate?: string;
-  unitGroup?: "metric" | "us" | "uk";
+  unitGroup?: 'metric' | 'us' | 'uk';
   include?: string;
 }
 

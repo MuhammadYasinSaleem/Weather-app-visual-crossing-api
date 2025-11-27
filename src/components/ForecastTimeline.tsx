@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { Cloud, CloudRain, Sun, CloudSnow } from "lucide-react";
-import type { DayData, HourData } from "../types/weather.types";
+import { motion } from 'framer-motion';
+import { Cloud, CloudRain, Sun, CloudSnow } from 'lucide-react';
+import type { DayData, HourData } from '../types/weather.types';
 
 interface ForecastTimelineProps {
   days: DayData[];
@@ -13,13 +13,13 @@ export default function ForecastTimeline({
 }: ForecastTimelineProps) {
   const getHourlyIcon = (conditions: string) => {
     const lower = conditions.toLowerCase();
-    if (lower.includes("rain")) {
+    if (lower.includes('rain')) {
       return <CloudRain className="w-6 h-6 text-blue-400" />;
-    } else if (lower.includes("cloud")) {
+    } else if (lower.includes('cloud')) {
       return <Cloud className="w-6 h-6 text-slate-300" />;
-    } else if (lower.includes("snow")) {
+    } else if (lower.includes('snow')) {
       return <CloudSnow className="w-6 h-6 text-cyan-200" />;
-    } else if (lower.includes("clear") || lower.includes("sunny")) {
+    } else if (lower.includes('clear') || lower.includes('sunny')) {
       return <Sun className="w-6 h-6 text-yellow-400" />;
     }
     return <Sun className="w-6 h-6 text-yellow-400" />;
@@ -27,11 +27,11 @@ export default function ForecastTimeline({
 
   const allHours: HourData[] = days.flatMap((day) => day.hours);
 
-  const currentHour = parseInt(currentDateTime.split(":")[0], 10);
+  const currentHour = parseInt(currentDateTime.split(':')[0], 10);
 
   let currentHourIndex = 0;
   for (let i = 0; i < allHours.length; i++) {
-    const hourValue = parseInt(allHours[i].datetime.split(":")[0], 10);
+    const hourValue = parseInt(allHours[i].datetime.split(':')[0], 10);
     if (hourValue === currentHour) {
       currentHourIndex = i;
       break;
@@ -52,10 +52,10 @@ export default function ForecastTimeline({
         <div className="flex gap-3 pb-2">
           {displayHours.map((hour, index) => {
             const timeString = hour.datetime;
-            const [hours, minutes] = timeString.split(":");
+            const [hours, minutes] = timeString.split(':');
             const hour24 = parseInt(hours, 10);
             const hour12 = hour24 % 12 || 12;
-            const ampm = hour24 >= 12 ? "PM" : "AM";
+            const ampm = hour24 >= 12 ? 'PM' : 'AM';
             const displayTime = `${hour12}:${minutes} ${ampm}`;
 
             const isPast = index < currentHourIndex - startIndex;
@@ -70,10 +70,10 @@ export default function ForecastTimeline({
                 whileHover={{ scale: 1.08, y: -5 }}
                 className={`flex-shrink-0 rounded-xl p-4 border min-w-24 text-center transition-colors cursor-pointer ${
                   isCurrent
-                    ? "bg-blue-600/60 border-blue-400/50 ring-2 ring-blue-400/30"
+                    ? 'bg-blue-600/60 border-blue-400/50 ring-2 ring-blue-400/30'
                     : isPast
-                      ? "bg-slate-700/30 border-slate-600/20 opacity-70 hover:bg-slate-700/50"
-                      : "bg-slate-700/50 border-slate-600/20 hover:bg-slate-700/70"
+                      ? 'bg-slate-700/30 border-slate-600/20 opacity-70 hover:bg-slate-700/50'
+                      : 'bg-slate-700/50 border-slate-600/20 hover:bg-slate-700/70'
                 }`}
               >
                 {isCurrent && (
@@ -86,10 +86,10 @@ export default function ForecastTimeline({
                 <p
                   className={`text-xs font-semibold mb-3 ${
                     isCurrent
-                      ? "text-blue-100"
+                      ? 'text-blue-100'
                       : isPast
-                        ? "text-slate-400"
-                        : "text-slate-300"
+                        ? 'text-slate-400'
+                        : 'text-slate-300'
                   }`}
                 >
                   {displayTime}
@@ -108,10 +108,10 @@ export default function ForecastTimeline({
                 <p
                   className={`text-lg font-bold mb-2 ${
                     isCurrent
-                      ? "text-white"
+                      ? 'text-white'
                       : isPast
-                        ? "text-slate-300"
-                        : "text-white"
+                        ? 'text-slate-300'
+                        : 'text-white'
                   }`}
                 >
                   {Math.round(hour.temp)}°

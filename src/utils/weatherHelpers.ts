@@ -1,4 +1,4 @@
-import type { WeatherError } from "../types/weather.types";
+import type { WeatherError } from '../types/weather.types';
 
 export class WeatherApiError extends Error {
   status?: number;
@@ -6,11 +6,11 @@ export class WeatherApiError extends Error {
 
   constructor(message: string, status?: number, code?: string) {
     super(message);
-    this.name = "WeatherApiError";
+    this.name = 'WeatherApiError';
     this.status = status;
     this.code = code;
 
-    if (typeof (Error as any).captureStackTrace === "function") {
+    if (typeof (Error as any).captureStackTrace === 'function') {
       (Error as any).captureStackTrace(this, WeatherApiError);
     }
   }
@@ -32,12 +32,12 @@ export function formatWeatherError(error: unknown): WeatherError {
   }
 
   return {
-    message: "An unexpected error occurred while fetching weather data",
+    message: 'An unexpected error occurred while fetching weather data',
   };
 }
 
 export function validateLocation(location: string): boolean {
-  if (!location || typeof location !== "string") {
+  if (!location || typeof location !== 'string') {
     return false;
   }
 
@@ -47,8 +47,8 @@ export function validateLocation(location: string): boolean {
 
 export function formatDate(date: Date): string {
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 }
 

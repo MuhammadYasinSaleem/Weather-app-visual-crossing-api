@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
-import { RefreshCw } from "lucide-react";
-import WeatherCard from "./components/WeatherCard";
-import LocationSearch from "./components/LocationSearch";
-import ForecastTimeline from "./components/ForecastTimeline";
-import { useWeather } from "./hooks/useWeather";
-import "./App.css";
+import { motion } from 'framer-motion';
+import { RefreshCw } from 'lucide-react';
+import WeatherCard from './components/WeatherCard';
+import LocationSearch from './components/LocationSearch';
+import ForecastTimeline from './components/ForecastTimeline';
+import { useWeather } from './hooks/useWeather';
+import './App.css';
 
 function App() {
   const { weatherData, loading, error, fetchWeather, refresh } =
@@ -48,7 +48,7 @@ function App() {
                 className="bg-slate-700/50 hover:bg-slate-700 disabled:bg-slate-800 p-3 rounded-xl border border-slate-600/30 transition-colors"
               >
                 <RefreshCw
-                  className={`w-5 h-5 ${loading ? "animate-spin" : ""}`}
+                  className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`}
                 />
               </motion.button>
             )}

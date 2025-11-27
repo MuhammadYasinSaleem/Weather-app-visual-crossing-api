@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import {
   Cloud,
   CloudRain,
@@ -7,8 +7,8 @@ import {
   Droplets,
   Eye,
   CloudSnow,
-} from "lucide-react";
-import type { VisualCrossingResponse } from "../types/weather.types";
+} from 'lucide-react';
+import type { VisualCrossingResponse } from '../types/weather.types';
 
 interface WeatherCardProps {
   weatherData: VisualCrossingResponse;
@@ -21,13 +21,13 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
 
   const getWeatherIcon = (conditions: string) => {
     const lower = conditions.toLowerCase();
-    if (lower.includes("rain")) {
+    if (lower.includes('rain')) {
       return <CloudRain className="w-24 h-24 text-blue-400" />;
-    } else if (lower.includes("cloud")) {
+    } else if (lower.includes('cloud')) {
       return <Cloud className="w-24 h-24 text-slate-300" />;
-    } else if (lower.includes("snow")) {
+    } else if (lower.includes('snow')) {
       return <CloudSnow className="w-24 h-24 text-cyan-200" />;
-    } else if (lower.includes("clear") || lower.includes("sunny")) {
+    } else if (lower.includes('clear') || lower.includes('sunny')) {
       return <Sun className="w-24 h-24 text-yellow-400" />;
     }
     return <Sun className="w-24 h-24 text-yellow-400" />;
@@ -99,7 +99,7 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
             <p className="text-2xl font-semibold">
               {current.visibility !== null
                 ? `${Math.round(current.visibility)} km`
-                : "N/A"}
+                : 'N/A'}
             </p>
           </motion.div>
 
