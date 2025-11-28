@@ -1,19 +1,19 @@
-# ☀️ Weather App
+# Weather App
 
 A modern, responsive weather application built with React, TypeScript, and Vite. Features real-time weather data, auto-geolocation, 24-hour forecasts, and beautiful animations powered by Framer Motion.
 
-## ✨ Features
+## Features
 
-- 🌍 **Location Search**: Search for weather in any city worldwide
-- 📍 **Auto-Geolocation**: Automatically detects your current location on first load
-- 🌡️ **Current Weather**: Displays temperature, wind speed, humidity, visibility, and feels-like temperature
-- ⏰ **24-Hour Forecast**: View hourly weather data with interactive timeline
-- 🔄 **Refresh**: Manually refresh weather data with one click
-- 🎨 **Beautiful UI**: Modern glass-morphism design with smooth animations
-- 📱 **Responsive**: Works seamlessly on desktop, tablet, and mobile devices
-- ⚡ **Fast**: Built with Vite for lightning-fast development and builds
+- **Location Search**: Search for weather in any city worldwide
+- **Auto-Geolocation**: Automatically detects your current location on first load
+- **Current Weather**: Displays temperature, wind speed, humidity, visibility, and feels-like temperature
+- **24-Hour Forecast**: View hourly weather data with interactive timeline
+- **Refresh**: Manually refresh weather data with one click
+- **Beautiful UI**: Modern glass-morphism design with smooth animations
+- **Responsive**: Works seamlessly on desktop, tablet, and mobile devices
+- **Fast**: Built with Vite for lightning-fast development and builds
 
-## 🚀 How It Works
+## How It Works
 
 The app uses the **Visual Crossing Weather API** to fetch real-time weather data. It features:
 
@@ -24,7 +24,7 @@ The app uses the **Visual Crossing Weather API** to fetch real-time weather data
 5. **TypeScript**: Full type safety with strongly-typed API responses
 6. **Component Architecture**: Clean separation of concerns with reusable components
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **React 19.2.0** - UI framework
 - **TypeScript** - Type safety and better DX
@@ -35,7 +35,7 @@ The app uses the **Visual Crossing Weather API** to fetch real-time weather data
 - **Tailwind CSS** - Utility-first styling
 - **Visual Crossing Weather API** - Real-time weather data
 
-## 📦 Installation
+## Installation
 
 1. **Clone the repository**
 
@@ -74,7 +74,7 @@ The app uses the **Visual Crossing Weather API** to fetch real-time weather data
 
    Navigate to `http://localhost:5173`
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 weather-app/
@@ -102,14 +102,14 @@ weather-app/
 └── README.md
 ```
 
-## 🔑 Environment Variables
+## Environment Variables
 
 | Variable              | Description                  | Required |
 | --------------------- | ---------------------------- | -------- |
-| `VITE_WEATHERAPI_KEY` | Your Visual Crossing API key | ✅ Yes   |
-| `VITE_BASE_URL`       | Base URL for the Weather API | ✅ Yes   |
+| `VITE_WEATHERAPI_KEY` | Your Visual Crossing API key | Yes      |
+| `VITE_BASE_URL`       | Base URL for the Weather API | Yes      |
 
-## 🌐 API Usage
+## API Usage
 
 The app uses the Visual Crossing Weather API with the following configuration:
 
@@ -121,7 +121,7 @@ The app uses the Visual Crossing Weather API with the following configuration:
 ### Example API Call:
 
 ```typescript
-const data = await weatherService.getWeather("London");
+const data = await weatherService.getWeather('London');
 ```
 
 ### API Methods:
@@ -130,7 +130,7 @@ const data = await weatherService.getWeather("London");
 - `getCurrentWeather(location)` - Get only current weather conditions
 - `getHourlyForecast(location, hours)` - Get hourly forecast data
 
-## 🧩 Components
+## Components
 
 ### LocationSearch
 
@@ -158,7 +158,7 @@ Horizontal scrollable timeline showing 24-hour forecast with:
 - Temperature per hour
 - Precipitation probability
 
-## 🎨 Styling
+## Styling
 
 The app uses a modern dark theme with:
 
@@ -168,7 +168,7 @@ The app uses a modern dark theme with:
 - Responsive grid layouts
 - Hover effects for interactive elements
 
-## 🧪 Development
+## Development
 
 ```bash
 # Run development server
@@ -184,7 +184,7 @@ npm run preview
 npm run lint
 ```
 
-## 📝 Code Quality
+## Code Quality
 
 - **No console.log statements** in production code
 - **Type-safe** with TypeScript strict mode
@@ -193,7 +193,7 @@ npm run lint
 - **Error handling** with custom error classes
 - **Loading states** for better UX
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these guidelines:
 
@@ -203,11 +203,11 @@ Contributions are welcome! Please follow these guidelines:
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
+## License
 
 MIT License - feel free to use this project for learning or commercial purposes.
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### API Key Issues
 
@@ -226,3 +226,5 @@ MIT License - feel free to use this project for learning or commercial purposes.
 - Clear node_modules and reinstall: `rm -rf node_modules && npm install`
 - Ensure you're using Node.js version 16 or higher
 - Check that all TypeScript types are correctly imported
+
+````
