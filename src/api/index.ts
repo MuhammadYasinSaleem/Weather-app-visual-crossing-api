@@ -4,7 +4,7 @@ import {
   getWeather,
   getCurrentWeather,
   getHourlyForecast,
-} from './weather';
+} from '../services/weather';
 
 export {
   axiosInstance,
