@@ -14,15 +14,15 @@ export default function ForecastTimeline({
   const getHourlyIcon = (conditions: string) => {
     const lower = conditions.toLowerCase();
     if (lower.includes('rain')) {
-      return <CloudRain className="w-6 h-6 text-blue-400" />;
+      return <CloudRain className='w-6 h-6 text-blue-400' />;
     } else if (lower.includes('cloud')) {
-      return <Cloud className="w-6 h-6 text-slate-300" />;
+      return <Cloud className='w-6 h-6 text-slate-300' />;
     } else if (lower.includes('snow')) {
-      return <CloudSnow className="w-6 h-6 text-cyan-200" />;
+      return <CloudSnow className='w-6 h-6 text-cyan-200' />;
     } else if (lower.includes('clear') || lower.includes('sunny')) {
-      return <Sun className="w-6 h-6 text-yellow-400" />;
+      return <Sun className='w-6 h-6 text-yellow-400' />;
     }
-    return <Sun className="w-6 h-6 text-yellow-400" />;
+    return <Sun className='w-6 h-6 text-yellow-400' />;
   };
 
   const allHours: HourData[] = days.flatMap((day) => day.hours);
@@ -44,16 +44,16 @@ export default function ForecastTimeline({
 
   return (
     <div
-      className="bg-gradient-to-r from-slate-800/80 to-slate-700/80
+      className='bg-gradient-to-r from-slate-800/80 to-slate-700/80
       backdrop-blur-xl rounded-2xl p-6 border border-slate-600/30
-      shadow-2xl"
+      shadow-2xl'
     >
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-bold text-slate-100">48-Hour Timeline</h3>
-        <p className="text-sm text-slate-400">24 hrs back · 24 hrs forward</p>
+      <div className='flex items-center justify-between mb-6'>
+        <h3 className='text-xl font-bold text-slate-100'>48-Hour Timeline</h3>
+        <p className='text-sm text-slate-400'>24 hrs back · 24 hrs forward</p>
       </div>
-      <div className="overflow-x-auto">
-        <div className="flex gap-3 pb-2">
+      <div className='overflow-x-auto'>
+        <div className='flex gap-3 pb-2'>
           {displayHours.map((hour, index) => {
             const timeString = hour.datetime;
             const [hours, minutes] = timeString.split(':');
@@ -75,24 +75,24 @@ export default function ForecastTimeline({
                 className={`flex-shrink-0 rounded-xl p-4 border
                 min-w-24 text-center transition-colors
                 cursor-pointer ${
-              isCurrent
-                ? 'bg-blue-600/60 border-blue-400/50 \
+                  isCurrent
+                    ? 'bg-blue-600/60 border-blue-400/50 \
 ring-2 ring-blue-400/30'
-                : isPast
-                  ? 'bg-slate-700/30 \
+                    : isPast
+                      ? 'bg-slate-700/30 \
 border-slate-600/20 opacity-70 hover:bg-slate-700/50'
-                  : 'bg-slate-700/50 \
+                      : 'bg-slate-700/50 \
 border-slate-600/20 hover:bg-slate-700/70'
-              }`}
+                }`}
               >
                 {isCurrent && (
                   <div
-                    className="absolute -top-2 left-1/2 transform
-                    -translate-x-1/2"
+                    className='absolute -top-2 left-1/2 transform
+                    -translate-x-1/2'
                   >
                     <span
-                      className="text-xs bg-blue-500 text-white px-2
-                      py-0.5 rounded-full font-semibold"
+                      className='text-xs bg-blue-500 text-white px-2
+                      py-0.5 rounded-full font-semibold'
                     >
                       NOW
                     </span>
@@ -116,7 +116,7 @@ border-slate-600/20 hover:bg-slate-700/70'
                     repeat: Number.POSITIVE_INFINITY,
                     delay: index * 0.1,
                   }}
-                  className="flex justify-center mb-3"
+                  className='flex justify-center mb-3'
                 >
                   {getHourlyIcon(hour.conditions)}
                 </motion.div>
@@ -131,7 +131,7 @@ border-slate-600/20 hover:bg-slate-700/70'
                 >
                   {Math.round(hour.temp)}°
                 </p>
-                <p className="text-xs text-slate-400">
+                <p className='text-xs text-slate-400'>
                   {Math.round(hour.precipprob)}%
                 </p>
               </motion.div>

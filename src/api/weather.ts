@@ -86,4 +86,7 @@ export const getCurrentWeather = (location: string) =>
 export const getHourlyForecast = (location: string, hours?: number) =>
   weatherService.getHourlyForecast(location, hours);
 
-export type { WeatherData, WeatherQueryParams } from '@customTypes/weather.types';
+export type {
+  WeatherData,
+  WeatherQueryParams,
+} from '@customTypes/weather.types';
