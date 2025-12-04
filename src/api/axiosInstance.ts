@@ -74,30 +74,30 @@ axiosInstance.interceptors.response.use(
       const data: any = error.response.data;
 
       switch (status) {
-        case 400:
-          return Promise.reject(
-            new Error(data?.message || 'Bad Request: Invalid parameters'),
-          );
-        case 401:
-          return Promise.reject(new Error('Unauthorized: Invalid API key'));
-        case 403:
-          return Promise.reject(new Error('Forbidden: Access denied'));
-        case 404:
-          return Promise.reject(new Error('Location not found'));
-        case 429:
-          return Promise.reject(
-            new Error('Rate limit exceeded. Please try again later'),
-          );
-        case 500:
-          return Promise.reject(
-            new Error('Server error. Please try again later'),
-          );
-        default:
-          return Promise.reject(
-            new Error(
-              data?.message || `Error ${status}: ${error.response.statusText}`,
-            ),
-          );
+      case 400:
+        return Promise.reject(
+          new Error(data?.message || 'Bad Request: Invalid parameters'),
+        );
+      case 401:
+        return Promise.reject(new Error('Unauthorized: Invalid API key'));
+      case 403:
+        return Promise.reject(new Error('Forbidden: Access denied'));
+      case 404:
+        return Promise.reject(new Error('Location not found'));
+      case 429:
+        return Promise.reject(
+          new Error('Rate limit exceeded. Please try again later'),
+        );
+      case 500:
+        return Promise.reject(
+          new Error('Server error. Please try again later'),
+        );
+      default:
+        return Promise.reject(
+          new Error(
+            data?.message || `Error ${status}: ${error.response.statusText}`,
+          ),
+        );
       }
     } else if (error.request) {
       return Promise.reject(

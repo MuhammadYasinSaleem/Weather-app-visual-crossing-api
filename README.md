@@ -226,5 +226,3 @@ MIT License - feel free to use this project for learning or commercial purposes.
 - Clear node_modules and reinstall: `rm -rf node_modules && npm install`
 - Ensure you're using Node.js version 16 or higher
 - Check that all TypeScript types are correctly imported
-
-````

@@ -1,5 +1,12 @@
-import { useState, useEffect, useCallback } from 'react';
-import { weatherService } from '@/services/weather';
+import { useEffect, useCallback } from 'react';
+import { useAppDispatch, useAppSelector } from '@store/index';
+import { fetchWeather as fetchWeatherThunk } from '@store/weatherSlice';
+import {
+  selectWeatherData,
+  selectWeatherLoading,
+  selectWeatherError,
+  selectLastLocation,
+} from '@store/weatherSlice';
 import type { VisualCrossingResponse } from '@customTypes/weather.types';
 
 interface UseWeatherResult {
@@ -12,46 +19,36 @@ interface UseWeatherResult {
 }
 
 export function useWeather(autoGeolocate: boolean = true): UseWeatherResult {
-  const [weatherData, setWeatherData] = useState<VisualCrossingResponse | null>(
-    null,
+  const dispatch = useAppDispatch();
+  const weatherData = useAppSelector(
+    selectWeatherData,
+  ) as VisualCrossingResponse | null;
+  const loading = useAppSelector(selectWeatherLoading);
+  const error = useAppSelector(selectWeatherError);
+  const lastLocation = useAppSelector(selectLastLocation);
+
+  const fetchWeather = useCallback(
+    async (location: string) => {
+      await dispatch(fetchWeatherThunk(location)).unwrap();
+    },
+    [dispatch],
   );
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const [lastLocation, setLastLocation] = useState<string>('');
-
-  const fetchWeather = useCallback(async (location: string) => {
-    setLoading(true);
-    setError(null);
-
-    try {
-      const data = await weatherService.getWeather(location);
-      setWeatherData(data as any);
-      setLastLocation(location);
-    } catch (err: any) {
-      const errorMessage =
-        err.message || 'Failed to fetch weather data. Please try again.';
-      setError(errorMessage);
-      setWeatherData(null);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
 
   const fetchWeatherByCoordinates = useCallback(
     async (lat: number, lon: number) => {
       const formattedLat = lat.toFixed(4);
       const formattedLon = lon.toFixed(4);
       const location = `${formattedLat},${formattedLon}`;
-      await fetchWeather(location);
+      await dispatch(fetchWeatherThunk(location)).unwrap();
     },
-    [fetchWeather],
+    [dispatch],
   );
 
   const refresh = useCallback(async () => {
     if (lastLocation) {
-      await fetchWeather(lastLocation);
+      await dispatch(fetchWeatherThunk(lastLocation)).unwrap();
     }
-  }, [lastLocation, fetchWeather]);
+  }, [lastLocation, dispatch]);
 
   useEffect(() => {
     if (autoGeolocate && navigator.geolocation) {
@@ -61,7 +58,7 @@ export function useWeather(autoGeolocate: boolean = true): UseWeatherResult {
           fetchWeatherByCoordinates(latitude, longitude);
         },
         () => {
-          fetchWeather('New York');
+          fetchWeather('Lahore');
         },
       );
     }
