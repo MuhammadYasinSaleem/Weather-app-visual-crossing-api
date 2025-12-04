@@ -1,1 +1,7 @@
-// redux store and slices would be defined here in the future
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState, AppDispatch } from './redux';
+
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+export const useAppSelector = useSelector.withTypes<RootState>();
+
+export type { RootState, AppDispatch } from './redux';

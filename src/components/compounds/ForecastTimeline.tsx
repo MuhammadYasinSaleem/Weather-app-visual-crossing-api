@@ -75,15 +75,15 @@ export default function ForecastTimeline({
                 className={`flex-shrink-0 rounded-xl p-4 border
                 min-w-24 text-center transition-colors
                 cursor-pointer ${
-                  isCurrent
-                    ? 'bg-blue-600/60 border-blue-400/50 \
+              isCurrent
+                ? 'bg-blue-600/60 border-blue-400/50 \
 ring-2 ring-blue-400/30'
-                    : isPast
-                      ? 'bg-slate-700/30 \
+                : isPast
+                  ? 'bg-slate-700/30 \
 border-slate-600/20 opacity-70 hover:bg-slate-700/50'
-                      : 'bg-slate-700/50 \
+                  : 'bg-slate-700/50 \
 border-slate-600/20 hover:bg-slate-700/70'
-                }`}
+              }`}
               >
                 {isCurrent && (
                   <div
